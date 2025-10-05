@@ -13,4 +13,6 @@ public interface IWorkOrderRepository
     Task<WorkOrder?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
     Task UpdateAsync(WorkOrder entity, CancellationToken cancellationToken);
     Task DeleteAsync(Guid id, CancellationToken cancellationToken);
+    
+    Task<bool> ExistsByWorkOrderNumberAsync(string workOrderNumber, CancellationToken cancellationToken);
 }

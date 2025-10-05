@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Interfaces.Repositories;
@@ -19,7 +20,6 @@ public record CreateMaintenanceScheduleCommand : IRequest<MaintenanceSchedule>
 public class CreateMaintenanceScheduleCommandHandler : IRequestHandler<CreateMaintenanceScheduleCommand, MaintenanceSchedule>
 {
     private readonly IEquipmentRepository _equipmentRepository;
-    // IMaintenanceScheduleRepository may be implemented later in Infrastructure
     private readonly IMaintenanceScheduleRepository? _scheduleRepository;
 
     public CreateMaintenanceScheduleCommandHandler(
@@ -32,7 +32,6 @@ public class CreateMaintenanceScheduleCommandHandler : IRequestHandler<CreateMai
 
     public async Task<MaintenanceSchedule> Handle(CreateMaintenanceScheduleCommand request, CancellationToken cancellationToken)
     {
-        // Optional check: ensure equipment exists
         var equipment = await _equipmentRepository.GetByIdAsync(request.EquipmentId, cancellationToken);
         if (equipment is null)
         {

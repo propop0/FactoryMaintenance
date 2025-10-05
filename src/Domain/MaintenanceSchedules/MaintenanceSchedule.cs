@@ -68,8 +68,8 @@ public class MaintenanceSchedule
 
     public void Deactivate()
     {
-        IsActive = false;
-        UpdatedAt = DateTime.UtcNow;
+        this.IsActive = false;
+        this.UpdatedAt = DateTime.UtcNow;
     }
 }
 

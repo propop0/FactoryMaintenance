@@ -13,4 +13,5 @@ public interface IEquipmentRepository
     Task<Equipment?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
     Task UpdateAsync(Equipment entity, CancellationToken cancellationToken);
     Task DeleteAsync(Guid id, CancellationToken cancellationToken);
+    Task<bool> ExistsBySerialNumberAsync(string serialNumber, CancellationToken cancellationToken);
 }

@@ -8,9 +8,6 @@ public class CreateWorkOrderCommandValidator : AbstractValidator<CreateWorkOrder
 {
     public CreateWorkOrderCommandValidator()
     {
-        RuleFor(x => x.WorkOrderNumber)
-            .NotEmpty().WithMessage("WorkOrderNumber is required");
-
         RuleFor(x => x.Title)
             .NotEmpty().WithMessage("Title is required")
             .MaximumLength(200).WithMessage("Title cannot exceed 200 characters");

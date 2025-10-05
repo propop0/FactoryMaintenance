@@ -1,14 +1,21 @@
 using System;
+using System.Threading;
 using FluentValidation;
+using Application.Common.Interfaces.Repositories;
 
 namespace Application.MaintenanceSchedules.Validators;
 
 public class CreateMaintenanceScheduleCommandValidator : AbstractValidator<Application.MaintenanceSchedules.Commands.CreateMaintenanceScheduleCommand>
 {
-    public CreateMaintenanceScheduleCommandValidator()
+    public CreateMaintenanceScheduleCommandValidator(IEquipmentRepository equipmentRepository)
     {
         RuleFor(x => x.EquipmentId)
-            .NotEmpty().WithMessage("EquipmentId is required");
+            .NotEmpty().WithMessage("EquipmentId is required")
+            .MustAsync(async (id, ct) =>
+            {
+                var eq = await equipmentRepository.GetByIdAsync(id, ct);
+                return eq != null;
+            }).WithMessage("Equipment with provided id does not exist");
 
         RuleFor(x => x.TaskName)
             .NotEmpty().WithMessage("TaskName is required")
