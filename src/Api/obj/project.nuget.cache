@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Mswp7KReAkE=",
+  "dgSpecHash": "oNVRuvhRLaY=",
   "success": true,
   "projectFilePath": "C:\\Users\\victus\\Desktop\\Factory_Maintenance_Management_System\\src\\Api\\Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\victus\\.nuget\\packages\\efcore.namingconventions\\9.0.0\\efcore.namingconventions.9.0.0.nupkg.sha512",
     "C:\\Users\\victus\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
     "C:\\Users\\victus\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.1\\fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
     "C:\\Users\\victus\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.0.0\\fluentvalidation.dependencyinjectionextensions.12.0.0.nupkg.sha512",
