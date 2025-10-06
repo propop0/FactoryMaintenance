@@ -20,11 +20,11 @@ public record CreateMaintenanceScheduleCommand : IRequest<MaintenanceSchedule>
 public class CreateMaintenanceScheduleCommandHandler : IRequestHandler<CreateMaintenanceScheduleCommand, MaintenanceSchedule>
 {
     private readonly IEquipmentRepository _equipmentRepository;
-    private readonly IMaintenanceScheduleRepository? _scheduleRepository;
+    private readonly IMaintenanceScheduleRepository _scheduleRepository;
 
     public CreateMaintenanceScheduleCommandHandler(
         IEquipmentRepository equipmentRepository,
-        IMaintenanceScheduleRepository? scheduleRepository = null)
+        IMaintenanceScheduleRepository scheduleRepository)
     {
         _equipmentRepository = equipmentRepository;
         _scheduleRepository = scheduleRepository;
@@ -46,12 +46,7 @@ public class CreateMaintenanceScheduleCommandHandler : IRequestHandler<CreateMai
             request.Frequency,
             request.NextDueDate);
 
-        if (_scheduleRepository != null)
-        {
-            var created = await _scheduleRepository.AddAsync(schedule, cancellationToken);
-            return created;
-        }
-
-        return schedule;
+        var created = await _scheduleRepository.AddAsync(schedule, cancellationToken);
+        return created;
     }
 }
